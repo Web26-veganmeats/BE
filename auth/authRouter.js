@@ -34,10 +34,16 @@ router.post('/register', (req, res) => {
 
 //Logins in User with token
 router.post('/login', (req, res) => {
+  const validateResult = validateUser(req.body)
+
+  if (!validateResult.isSuccessful) {
+    res.status(400).json({message: validateResult.errors});
+    return;
+  }
+
   let {username, password} = req.body
 
   Users.findBy({username})
-    .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = getJwtToken(user.username)

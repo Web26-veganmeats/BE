@@ -32,3 +32,16 @@ describe('GET /', () => {
       })
   })
 })
+
+describe('Post /api/auth/', () => {
+  
+  it('should return 400, not passing user info in for REGISTER ', async () => {
+    const res = await request(server).post('/api/auth/register')
+    expect(res.status).toBe(400)
+  })
+
+  it('should return 400, not passing user info in for LOGIN', async () => {
+    const res = await request(server).post('/api/auth/login')
+    expect(res.status).toBe(400)
+  })
+})
