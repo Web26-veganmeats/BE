@@ -7,46 +7,46 @@ const secrets = require('../config/secrets');
 const {validateUser} = require('../users/usersHelpers');
 
 //Registers New User
-// router.post('/register', (req, res) => {
-//   let user = req.body;
+router.post('/register', (req, res) => {
+  let user = req.body;
 
-//   const validateResult = validateUser(user)
+  const validateResult = validateUser(user)
 
-//   if (validateResult.isSuccessful === true) {
-//     const hash = bcrypt.hashSync(user.password, 10);
-//     user.password = hash;
+  if (validateResult.isSuccessful === true) {
+    const hash = bcrypt.hashSync(user.password, 10);
+    user.password = hash;
 
-//     Users.add(user)
-//     .then(saved => {
-//       res.status(201).json(saved);
-//     })
-//     .catch(error => {
-//       res.status(error).json(error)
-//     })
-//   } else {
-//     res.status(400).json({
-//       message: 'Invalid information about the user, please see the error for details.',
-//       errors: validateResult.errors
-//     })
-    
-//   }  
-// });
-
-router.post("/register", (req, res) => {
-  let userInformation = req.body;
-  //   bcrypt.hash(userInformation.password, 12, (err, hashedPasswod) => {
-  //     userInformation.password = hashedPasswod;
-  const hash = bcrypt.hashSync(userInformation.password, 12);
-  userInformation.password = hash;
-  Users
-    .add(userInformation)
+    Users.add(user)
     .then(saved => {
       res.status(201).json(saved);
     })
     .catch(error => {
-      res.status(500).json(error);
-    });
- });
+      res.status(error).json(error)
+    })
+  } else {
+    res.status(400).json({
+      message: 'Invalid information about the user, please see the error for details.',
+      errors: validateResult.errors
+    })
+    
+  }  
+});
+
+// router.post("/register", (req, res) => {
+//   let userInformation = req.body;
+//   //   bcrypt.hash(userInformation.password, 12, (err, hashedPasswod) => {
+//   //     userInformation.password = hashedPasswod;
+//   const hash = bcrypt.hashSync(userInformation.password, 12);
+//   userInformation.password = hash;
+//   Users
+//     .add(userInformation)
+//     .then(saved => {
+//       res.status(201).json(saved);
+//     })
+//     .catch(error => {
+//       res.status(500).json(error);
+//     });
+//  });
 
 //Logins in User with token
 router.post('/login', (req, res) => {
