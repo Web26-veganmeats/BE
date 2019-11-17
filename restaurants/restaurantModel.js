@@ -9,7 +9,8 @@ module.exports = {
 }
 
 function find() {
-  return db('restaurants').select('id', 'name', 'street_address', 'city', 'state', 'zip_code', 'phone', 'hours')
+  return db('restaurants')
+    .select('id', 'name', 'street_address', 'city', 'state', 'zip_code', 'phone', 'hours')
 }
 
 function findById(id) {

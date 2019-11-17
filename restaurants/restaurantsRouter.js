@@ -3,19 +3,41 @@ const router = require('express').Router()
 const Restaurants = require('./restaurantModel');
 const {validateRestaurant} = require('./restaurantsHelper');
 const authMiddleware = require('../auth/authMiddleware');
+const Menu = require('./menuModel');
 
 //GETs all restaurants
 
-router.get('/', (req, res) => {
-  Restaurants.find()
-    .then(restaurants => {
-      res.status(200).json(restaurants)
-    })
-    .catch(error => {
-      console.log(error)
-      res.status(500).json(error)
-    })
-})
+router.get('/', async (req, res) => {
+  try {
+    let restaurants = await Restaurants.find();
+    restaurants = await Promise.all(restaurants.map(async (restaurant) => {
+      let menuItems = await Menu.findForRestaurant(restaurant.id);
+      return {
+        ...restaurant,
+        menuItems,
+      }
+    }));
+    res.status(200).json(restaurants)
+  } catch (error) {  
+    console.log(error)
+    res.status(500).json(error)
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try {
+    let restaurant = await Restaurants.findById(req.params.id);
+    if (!restaurant) {
+      res.status(404).json({message: `Restaurant with id ${req.params.id} does not exist`});
+      return;
+    }
+    restaurant.menuItems = await Menu.findForRestaurant(restaurant.id);
+    res.status(200).json(restaurant)
+  } catch (error) {  
+    console.log(error)
+    res.status(500).json(error)
+  }
+});
 
 //Adds new restaurants by verified user
 router.post('/new', authMiddleware, (req, res) => {
@@ -73,6 +95,21 @@ router.delete('/delete/:id', authMiddleware, (req, res) => {
       } else {
         res.status(200).json({message: 'This restaurant has been deleted.'})
       }
+    })
+})
+
+
+router.post('/:id/menu/new', authMiddleware, (req, res) => {
+  let menu = req.body;
+  const restaurant_id = req.params.id;
+
+  Menu.add(menu, restaurant_id)
+    .then(saved => {
+      res.status(201).json(saved)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).json(error)
     })
 })
 
