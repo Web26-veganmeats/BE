@@ -41,5 +41,26 @@ router.post('/new', (req, res) => {
   
 })
 
+router.put('/update/:id', (req, res) => {
+  const id = req.params.id;
+  const updatedRestaurant = req.body;
+
+  Restaurants.update(id, updatedRestaurant)
+    .then(count => {
+      if (count === 0) {
+        res.status(404).json({message: 'There is no restaurant with that ID.'})
+      } else {
+        Restaurants.findById(id)
+          .then(restaurant => {
+            res.status(201).json(restaurant)
+          })
+      }
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).json(error)
+    })
+})
+
 
 module.exports = router;
