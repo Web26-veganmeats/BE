@@ -4,8 +4,9 @@ const helmet = require('helmet')
 
 const authRouter = require('../auth/authRouter')
 const usersRouter = require('../users/usersRouter')
+const restaurantRouter = require('../restaurants/restaurantsRouter')
 
-const restricted = require('../auth/restrictedMiddleware')
+const authMiddleware = require('../auth/authMiddleware')
 
 const server = express();
 
@@ -14,7 +15,8 @@ server.use(helmet());
 server.use(cors());
 
 server.use('/api/auth', authRouter)
-server.use('/api/users', restricted, usersRouter)
+server.use('/api/users', authMiddleware, usersRouter)
+server.use('/api/restaurants', authMiddleware, restaurantRouter)
 
 server.get('/', (req, res) => {
   res.status(200).json({api: 'Ready to start working'})
