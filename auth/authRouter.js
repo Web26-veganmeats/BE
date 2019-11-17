@@ -46,7 +46,7 @@ router.post('/login', (req, res) => {
   Users.findBy({username})
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        const token = getJwtToken(user.username)
+        const token = getJwtToken(user)
 
         res.status(200).json({
           message: `Welcome ${username}`,
@@ -64,12 +64,14 @@ router.post('/login', (req, res) => {
 
 function getJwtToken(user) {
   const payload = {
-    subject: user.id,
+    user_id: user.id,
     username: user.username
   };
   const options = {
     expiresIn: '1d'
   }
+
+  console.log(payload);
 return jwt.sign(payload, secrets.JWT_SECRET, options)
 }
 

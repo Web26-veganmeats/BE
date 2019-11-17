@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
 //Adds new restaurants by verified user
 router.post('/new', (req, res) => {
   let restaurant = req.body;
-
   const restaurantValidated = validateRestaurant(restaurant)
 
   if (restaurantValidated.isSuccessful === true) {
@@ -59,6 +58,20 @@ router.put('/update/:id', (req, res) => {
     .catch(error => {
       console.log(error)
       res.status(500).json(error)
+    })
+})
+
+router.delete('/delete/:id', (req, res) => {
+  const id = req.params.id;
+  
+  Restaurants.remove(id)
+    .then(removedRestaurant => {
+      if (removedRestaurant === 0) {
+        //need to fix if restaurant has been deleted
+        res.status(404).json(removedRestaurant)
+      } else {
+        res.status(200).json({message: 'This restaurant has been deleted.'})
+      }
     })
 })
 

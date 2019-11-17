@@ -16,6 +16,7 @@ exports.up = function(knex) {
     tbl.string('phone', 128).notNullable();
 
     tbl.string('hours', 128);
+
   })
 };
 
