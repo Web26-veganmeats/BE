@@ -1,11 +1,16 @@
 const db = require('../data/dbConfig');
 
 module.exports = {
-  findRestaurantById,
+  find,
+  findById,
   add
 }
 
-function findRestaurantById(id) {
+function find() {
+  return db('restaurants').select('id', 'name', 'street_address', 'city', 'state', 'zip_code', 'phone', 'hours')
+}
+
+function findById(id) {
   return db('restaurants')
     .where({id})
     .first()
@@ -14,5 +19,5 @@ function findRestaurantById(id) {
 async function add(restaurant) {
   const [id] = await db('restaurants').insert(restaurant)
 
-  return findRestaurantById(id)
+  return findById(id)
 }

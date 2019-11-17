@@ -3,6 +3,19 @@ const router = require('express').Router()
 const Restaurants = require('./restaurantModel');
 const {validateRestaurant} = require('./restaurantsHelper')
 
+//GETs all restaurants
+
+router.get('/', (req, res) => {
+  Restaurants.find()
+    .then(restaurants => {
+      res.status(200).json(restaurants)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).json(error)
+    })
+})
+
 //Adds new restaurants by verified user
 router.post('/new', (req, res) => {
   let restaurant = req.body;
