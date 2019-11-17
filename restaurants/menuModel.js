@@ -22,7 +22,7 @@ async function add(menu_item, restaurant_id) {
     ...menu_item,
     restaurant_id
   }
-  const [id] = await db('menu_items').insert(menu_item)
+  const [id] = await db('menu_items').insert(menu_item, 'id')
 
   return findById(id)
 }
