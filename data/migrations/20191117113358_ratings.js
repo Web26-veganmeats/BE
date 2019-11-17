@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('ratings', tbl => {
     tbl.increments()
-    
+
     tbl.integer('rating').notNullable();
 
     tbl
@@ -10,7 +10,7 @@ exports.up = function(knex) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('restaurant')
+      .inTable('restaurants')
       .onDelete('RESTRICT')
       .onUpdate('CASCADE')
 
