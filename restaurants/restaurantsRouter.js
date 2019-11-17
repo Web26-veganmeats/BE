@@ -1,7 +1,8 @@
 const router = require('express').Router()
 
 const Restaurants = require('./restaurantModel');
-const {validateRestaurant} = require('./restaurantsHelper')
+const {validateRestaurant} = require('./restaurantsHelper');
+const authMiddleware = require('../auth/authMiddleware');
 
 //GETs all restaurants
 
@@ -17,7 +18,7 @@ router.get('/', (req, res) => {
 })
 
 //Adds new restaurants by verified user
-router.post('/new', (req, res) => {
+router.post('/new', authMiddleware, (req, res) => {
   let restaurant = req.body;
   const restaurantValidated = validateRestaurant(restaurant)
 
@@ -40,7 +41,7 @@ router.post('/new', (req, res) => {
   
 })
 
-router.put('/update/:id', (req, res) => {
+router.put('/update/:id', authMiddleware, (req, res) => {
   const id = req.params.id;
   const updatedRestaurant = req.body;
 
@@ -61,7 +62,7 @@ router.put('/update/:id', (req, res) => {
     })
 })
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', authMiddleware, (req, res) => {
   const id = req.params.id;
   
   Restaurants.remove(id)

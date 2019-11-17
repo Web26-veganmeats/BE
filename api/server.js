@@ -16,7 +16,7 @@ server.use(cors());
 
 server.use('/api/auth', authRouter)
 server.use('/api/users', authMiddleware, usersRouter)
-server.use('/api/restaurants', authMiddleware, restaurantRouter)
+server.use('/api/restaurants', restaurantRouter)
 
 server.get('/', (req, res) => {
   res.status(200).json({api: 'Ready to start working'})
