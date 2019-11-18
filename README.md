@@ -187,6 +187,13 @@ Sample Return:
   "hours": "8-5 Monday- Friday"
 }
 ```
+**DELETE Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/delete/3’**
+The registered user is able to delete a restaurant if they desire, due to closing or no vegan options. No body is required in the field. Once the user has deleted the restaurant the return wil look like this:
+```Return Sample:
+{
+  "message": "This restaurant has been deleted."
+}
+```
 
 **Add/POST New Menu Items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/1/menu/new’**
 Here the user can add the menu item object only to the specific restaurant id:
