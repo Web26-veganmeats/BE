@@ -14,7 +14,7 @@ Install the dependancies that comes with the repo
 npm i
 ```
 
-Start the development local server, this git will use port 3300
+Start the development local server, this git will use port 5000
 
 ```
 npm run server
