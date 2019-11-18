@@ -3,7 +3,8 @@ const db = require('../data/dbConfig')
 module.exports = {
   findById,
   findForRestaurant,
-  add
+  add,
+  update
 }
 
 function findById(id) {
@@ -25,4 +26,13 @@ async function add(menu_item, restaurant_id) {
   const [id] = await db('menu_items').insert(menu_item, 'id')
 
   return findById(id)
+}
+
+function update(id, changes) {
+  return db('menu_items')
+    .where('id', id)
+    .update(changes)
+    .then(() => {
+      return findById(id)
+    })
 }
