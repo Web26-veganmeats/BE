@@ -4,7 +4,8 @@ module.exports = {
   findById,
   findForRestaurant,
   add,
-  update
+  update,
+  remove
 }
 
 function findById(id) {
@@ -35,4 +36,8 @@ function update(id, changes) {
     .then(() => {
       return findById(id)
     })
+}
+
+function remove(id) {
+  return db('menu_items').where('id', id).del()
 }
