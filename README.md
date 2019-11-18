@@ -52,7 +52,9 @@ Sample Body:
 This returns an array of a restaurant object that includes the restaurant information and menu items if entered.
 
 If no menu has been entered they vistor will get this returned:
-```[
+```
+Sample Return:
+[
   {
     "id": 1,
     "name": "Vegas",
