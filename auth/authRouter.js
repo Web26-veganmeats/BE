@@ -32,21 +32,6 @@ router.post('/register', (req, res) => {
   }  
 });
 
-// router.post("/register", (req, res) => {
-//   let userInformation = req.body;
-//   //   bcrypt.hash(userInformation.password, 12, (err, hashedPasswod) => {
-//   //     userInformation.password = hashedPasswod;
-//   const hash = bcrypt.hashSync(userInformation.password, 12);
-//   userInformation.password = hash;
-//   Users
-//     .add(userInformation)
-//     .then(saved => {
-//       res.status(201).json(saved);
-//     })
-//     .catch(error => {
-//       res.status(500).json(error);
-//     });
-//  });
 
 //Logins in User with token
 router.post('/login', (req, res) => {
