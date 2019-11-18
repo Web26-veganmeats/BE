@@ -24,7 +24,7 @@ npm run server
 
 ## All Access Endpoints
 
-**Anyone has access to all restaurant information and menu items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants’**
+**Everyone has access to all restaurant information and menu items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants’**
 ```
 Sample Body:
 [
