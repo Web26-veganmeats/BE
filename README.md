@@ -127,6 +127,7 @@ Sample Return:
 **Add/POST New Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/new’**
 A logged in user can add a new restaurant using this sample object:
 ```
+Sample Body:
 {
 	"name": "The Vegan Joint",
 	"street_address": "123 Main",
@@ -141,6 +142,7 @@ A logged in user can add a new restaurant using this sample object:
 after the restaurant is created the body will return this restaurant object:
 
 ```
+Sample Return:
 {
   "id": 2,
   "name": "The Vegan Joint",
@@ -156,6 +158,7 @@ after the restaurant is created the body will return this restaurant object:
 **Update/PUT Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/update/1’**
 A logged in user can update a restaurant using this sample object:
 ```
+Sample Body:
 {
 	"name": "The Vegan Joint",
 	"street_address": "123 Main",
@@ -170,6 +173,7 @@ A logged in user can update a restaurant using this sample object:
 after the restaurant is updated the body will return this restaurant object:
 
 ```
+Sample Return:
 {
   "id": 2,
   "name": "The Vegan Joint, No Meat",
@@ -194,6 +198,7 @@ Sample Body:
 ```
 will return this Menu Item object:
 ```
+Sample Return
 {
   "id": 1,
   "name": "Chik'n Nachos",
