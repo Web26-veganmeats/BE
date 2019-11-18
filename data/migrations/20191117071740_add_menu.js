@@ -13,7 +13,7 @@ exports.up = function(knex) {
       .notNullable()
       .references('id')
       .inTable('restaurants')
-      .onDelete('RESTRICT')
+      .onDelete('CASCADE')
       .onUpdate('CASCADE')
   })
 };
