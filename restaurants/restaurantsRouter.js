@@ -63,6 +63,7 @@ router.post('/new', authMiddleware, (req, res) => {
   
 })
 
+//Update the Restaurant info by Registered User
 router.put('/update/:id', authMiddleware, (req, res) => {
   const id = req.params.id;
   const updatedRestaurant = req.body;
@@ -84,6 +85,7 @@ router.put('/update/:id', authMiddleware, (req, res) => {
     })
 })
 
+//Deletes restaurant
 router.delete('/delete/:id', authMiddleware, (req, res) => {
   const id = req.params.id;
   
@@ -98,7 +100,7 @@ router.delete('/delete/:id', authMiddleware, (req, res) => {
     })
 })
 
-
+//Adds menu item to a specific restaurant
 router.post('/:id/menu/new', authMiddleware, (req, res) => {
   let menu = req.body;
   const restaurant_id = req.params.id;
@@ -106,6 +108,28 @@ router.post('/:id/menu/new', authMiddleware, (req, res) => {
   Menu.add(menu, restaurant_id)
     .then(saved => {
       res.status(201).json(saved)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).json(error)
+    })
+})
+
+//Updates menu item for the restaurant
+router.put('/:id/menu/update', authMiddleware, (req, res) => {
+  const id = req.params.id;
+  const updatedMenuItem = req.body;
+
+  Menu.update(id, updatedMenuItem)
+    .then(count => {
+      if (count === 0) {
+        res.status(404).json({message: 'There is no menu item with that ID.'})
+      } else {
+        Menu.findById(id)
+          .then(menu => {
+            res.status(201).json(menu)
+          })
+      }
     })
     .catch(error => {
       console.log(error)
