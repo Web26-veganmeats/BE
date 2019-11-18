@@ -124,4 +124,81 @@ Sample Return:
 }
 ```
 
-**Log in/POST Registered User ‘https://veganmeets-buildweek.herokuapp.com/api/auth/login’**
+**Add/POST New Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/new’**
+A logged in user can add a new restaurant using this sample object:
+```
+{
+	"name": "The Vegan Joint",
+	"street_address": "123 Main",
+	"city": "Los Angeles",
+	"state": "CA",
+	"zip_code": "90064",
+	"phone": "867/5309",
+	"hours": "8-5 Monday- Friday"
+}
+```
+
+after the restaurant is created the body will return this restaurant object:
+
+```
+{
+  "id": 2,
+  "name": "The Vegan Joint",
+  "street_address": "123 Main",
+  "city": "Los Angeles",
+  "state": "CA",
+  "zip_code": "90064",
+  "phone": "867/5309",
+  "hours": "8-5 Monday- Friday"
+}
+```
+
+**Update/PUT Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/update/1’**
+A logged in user can update a restaurant using this sample object:
+```
+{
+	"name": "The Vegan Joint",
+	"street_address": "123 Main",
+	"city": "Los Angeles",
+	"state": "CA",
+	"zip_code": "90064",
+	"phone": "867/5309",
+	"hours": "8-5 Monday- Friday"
+}
+```
+
+after the restaurant is updated the body will return this restaurant object:
+
+```
+{
+  "id": 2,
+  "name": "The Vegan Joint, No Meat",
+  "street_address": "123 Main",
+  "city": "Los Angeles",
+  "state": "CA",
+  "zip_code": "90064",
+  "phone": "867/5309",
+  "hours": "8-5 Monday- Friday"
+}
+```
+
+**Add/POST New Menu Items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/1/menu/new’**
+Here the user can add the menu item object only to the specific restaurant id:
+```
+Sample Body:
+{
+	"name": "Chik'n Nachos",
+	"item_description": "Soy based chicken nachos",
+	"price": "$15.00"
+}
+```
+will return this Menu Item object:
+```
+{
+  "id": 1,
+  "name": "Chik'n Nachos",
+  "item_description": "Soy based chicken nachos",
+  "price": "$15.00",
+  "restaurant_id": 1
+}
+```
