@@ -157,7 +157,7 @@ Sample Return:
 }
 ```
 
-**Update/PUT Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/update/1’**
+**Update/PUT Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/update/:id’**
 A logged in user can update a restaurant using this sample object:
 ```
 Sample Body:
@@ -187,7 +187,7 @@ Sample Return:
   "hours": "8-5 Monday- Friday"
 }
 ```
-**DELETE Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/delete/3’**
+**DELETE Restaurant ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/delete/:id’**
 The registered user is able to delete a restaurant if they desire, due to closing or no vegan options. No body is required in the field. Once the user has deleted the restaurant the return wil look like this:
 ```Return Sample:
 {
@@ -195,7 +195,7 @@ The registered user is able to delete a restaurant if they desire, due to closin
 }
 ```
 
-**Add/POST New Menu Items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/1/menu/new’**
+**Add/POST New Menu Items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/:id/menu/new’**
 Here the user can add the menu item object only to the specific restaurant id:
 ```
 Sample Body:
@@ -216,7 +216,7 @@ Sample Return
   "restaurant_id": 1
 }
 ```
-**Update/PUT Menu Item ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/1/menu/update’**
+**Update/PUT Menu Item ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/menu/update/:id’**
 The registered user can update a menu item for the restaurant
 ```
 Sample body:
@@ -235,5 +235,13 @@ Sample Return:
   "item_description": "Soy based chicken nachos",
   "price": "$10.00",
   "restaurant_id": 1
+}
+```
+
+**DELETE Menu Items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/menu/:id/delete’**
+The registered user is able to delete a restaurant if they desire, due to closing or no vegan options. No body is required in the field. Once the user has deleted the restaurant the return wil look like this:
+```Return Sample:
+{
+  "message": "This restaurant has been deleted."
 }
 ```
