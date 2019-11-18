@@ -209,3 +209,24 @@ Sample Return
   "restaurant_id": 1
 }
 ```
+**Update/PUT Menu Item ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/1/menu/update’**
+The registered user can update a menu item for the restaurant
+```
+Sample body:
+{
+	"name": "Chik'n Nachos",
+	"item_description": "Soy based chicken nachos",
+	"price": "$10.00"
+}
+```
+After the user saves the changes, this is what the body should look like:
+```
+Sample Return:
+{
+  "id": 1,
+  "name": "Chik'n Nachos",
+  "item_description": "Soy based chicken nachos",
+  "price": "$10.00",
+  "restaurant_id": 1
+}
+```
