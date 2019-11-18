@@ -72,7 +72,7 @@ function getJwtToken(user) {
     expiresIn: '1d'
   }
 
-  console.log(payload);
+  
 return jwt.sign(payload, secrets.JWT_SECRET, options)
 }
 
