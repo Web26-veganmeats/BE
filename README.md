@@ -242,6 +242,6 @@ Sample Return:
 The registered user is able to delete a restaurant if they desire, due to closing or no vegan options. No body is required in the field. Once the user has deleted the restaurant the return wil look like this:
 ```Return Sample:
 {
-  "message": "This restaurant has been deleted."
+  "message": "This menu item has been deleted."
 }
 ```
