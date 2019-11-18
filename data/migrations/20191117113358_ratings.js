@@ -11,17 +11,8 @@ exports.up = function(knex) {
       .notNullable()
       .references('id')
       .inTable('restaurants')
-      .onDelete('RESTRICT')
-      .onUpdate('CASCADE')
-
-    tbl
-    .integer('user_id')
-    .unsigned()
-    .notNullable()
-    .references('id')
-    .inTable('users')
-    .onDelete('RESTRICT')
-    .onUpdate('CASCADE')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE');
   })
 };
 

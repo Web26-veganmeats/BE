@@ -1,12 +1,14 @@
 const router = require('express').Router()
 
 const Restaurants = require('./restaurantModel');
+const Menu = require('./menuModel');
+const Ratings = require('./ratingModel');
+
 const {validateRestaurant} = require('./restaurantsHelper');
 const authMiddleware = require('../auth/authMiddleware');
-const Menu = require('./menuModel');
+
 
 //GETs all restaurants
-
 router.get('/', async (req, res) => {
   try {
     let restaurants = await Restaurants.find();
@@ -24,6 +26,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//Gets Restaurant by ID
 router.get('/:id', async (req, res) => {
   try {
     let restaurant = await Restaurants.findById(req.params.id);
@@ -151,6 +154,8 @@ router.delete('/menu/:id/delete', authMiddleware, (req, res) => {
       }
     })
 })
+
+//Adds Rating to Restaurant
 
 
 module.exports = router;
