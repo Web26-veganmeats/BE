@@ -116,7 +116,7 @@ router.post('/:id/menu/new', authMiddleware, (req, res) => {
 })
 
 //Updates menu item for the restaurant
-router.put('/:id/menu/update', authMiddleware, (req, res) => {
+router.put('/menu/update/:id', authMiddleware, (req, res) => {
   const id = req.params.id;
   const updatedMenuItem = req.body;
 
@@ -134,6 +134,21 @@ router.put('/:id/menu/update', authMiddleware, (req, res) => {
     .catch(error => {
       console.log(error)
       res.status(500).json(error)
+    })
+})
+
+//Deletes menu item
+router.delete('/menu/:id/delete', authMiddleware, (req, res) => {
+  const id = req.params.id;
+  
+  Menu.remove(id)
+    .then(removedMenuItem => {
+      if (removedMenuItem === 0) {
+        //need to fix if restaurant has been deleted
+        res.status(404).json(removedMenuItem)
+      } else {
+        res.status(200).json({message: 'This menu item has been deleted.'})
+      }
     })
 })
 
