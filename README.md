@@ -174,6 +174,37 @@ Sample Body:
   }
 ]
 ```
+**Everyone has access to individual estaurant information and menu items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/:id’**
+```
+Sample Return:
+{
+  "id": 1,
+  "name": "The Vegan Joint",
+  "street_address": "10438 National Blvd #4664",
+  "city": "Los Angeles",
+  "state": "CA",
+  "zip_code": "90034",
+  "phone": "(310) 559-1357",
+  "hours": "Monday - Sunday 9am - 9pm",
+  "menuItems": [
+    {
+      "id": 1,
+      "name": "BBQ Pulled Jackfruit Sandwich",
+      "item_description": "Our vegan version of a classic pulled pork sandwich",
+      "price": "$9.95",
+      "restaurant_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Lentil Burger",
+      "item_description": "Lentil bean and brown rice patty with onion and red bell pepper on organic / non-GMO whole wheat bun.",
+      "price": "$9.95",
+      "restaurant_id": 1
+    }
+  ],
+  "rating": "3.0000000000000000"
+}
+```
 
 ## Restricted Access
 
@@ -283,7 +314,7 @@ The registered user is able to delete a restaurant if they desire, due to closin
 ```
 
 **Add/POST Ratings ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/;id/rating/new’**
-The registered user is able to add an integer rating (1-5) to the restaurant_id, which will then average out the ratings. This will show as an integer in the GET all restaurants, NOT as an object.
+The registered user is able to add an integer rating between 1-5 to the restaurant_id, which will then average out the ratings. This will show as an integer in the GET all restaurants, NOT as an object.
 ```
 Sample Body:
 {
