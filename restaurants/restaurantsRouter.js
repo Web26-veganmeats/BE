@@ -35,6 +35,8 @@ router.get('/:id', async (req, res) => {
       return;
     }
     restaurant.menuItems = await Menu.findForRestaurant(restaurant.id);
+    restaurant.rating = (await Ratings.averageForRestaurant(restaurant.id)).rating;
+
     res.status(200).json(restaurant)
   } catch (error) {  
     console.log(error)
@@ -156,6 +158,23 @@ router.delete('/menu/:id/delete', authMiddleware, (req, res) => {
 })
 
 //Adds Rating to Restaurant
+router.post('/:id/rating/new', authMiddleware, (req, res) => {
+  let rating = req.body;
 
+  if (rating.rating > 5 || rating.rating < 1) {
+    res.status(400).json({message: 'Rating between 1-5 are allowed'})
+    return
+  }
+  const restaurant_id = req.params.id;
+
+  Ratings.add(rating, restaurant_id)
+    .then(saved => {
+      res.status(201).json(saved)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).json(error)
+    })
+})
 
 module.exports = router;

@@ -45,3 +45,10 @@ describe('Post /api/auth/', () => {
     expect(res.status).toBe(400)
   })
 })
+
+describe('/api/restaurants', () => {
+  it('should return 200 OK for restaurants', async () => {
+    const res = await request(server).get('/api/restaurants')
+    expect(res.status).toBe(200)
+  })
+})
