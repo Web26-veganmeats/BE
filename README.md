@@ -1,5 +1,5 @@
 # BE
-The base URL for this project is:'https://veganmeets-buildweek.herokuapp.com'
+The base URL for this project is: https://veganmeets-buildweek.herokuapp.com
 
 ## Getting Started
 
