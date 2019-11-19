@@ -87,6 +87,93 @@ Sample Return:
   }
 ]
 ```
+**This is what a fuuly seeded restaurant object will look like:**
+```
+Sample Body:
+[
+  {
+    "id": 1,
+    "name": "The Vegan Joint",
+    "street_address": "10438 National Blvd #4664",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip_code": "90034",
+    "phone": "(310) 559-1357",
+    "hours": "Monday - Sunday 9am - 9pm",
+    "menuItems": [
+      {
+        "id": 1,
+        "name": "BBQ Pulled Jackfruit Sandwich",
+        "item_description": "Our vegan version of a classic pulled pork sandwich",
+        "price": "$9.95",
+        "restaurant_id": 1
+      },
+      {
+        "id": 2,
+        "name": "Lentil Burger",
+        "item_description": "Lentil bean and brown rice patty with onion and red bell pepper on organic / non-GMO whole wheat bun.",
+        "price": "$9.95",
+        "restaurant_id": 1
+      }
+    ],
+    "rating": "4.0000000000000000"
+  },
+  {
+    "id": 2,
+    "name": "Veggie Grill",
+    "street_address": "2025 Wilshire Blvd",
+    "city": "Santa Monica",
+    "state": "CA",
+    "zip_code": "90403",
+    "phone": "(310) 829-1155",
+    "hours": "Monday - Friday 10:30am - 11pm, Saturday - Sunday 11-11",
+    "menuItems": [
+      {
+        "id": 3,
+        "name": "VG Beyond Burger",
+        "item_description": "burger by beyond meat, american \"cheese\", grilled onions, house made sauce, tomato, iceberg lettuce, sesame buns + crispy fries",
+        "price": null,
+        "restaurant_id": 2
+      },
+      {
+        "id": 4,
+        "name": "Turkey Dinner Sandwich",
+        "item_description": "roasted \"turkey\", apple sausage stuffing, gravy & cranberry sauce + side of mashed yams",
+        "price": null,
+        "restaurant_id": 2
+      }
+    ],
+    "rating": null
+  },
+  {
+    "id": 3,
+    "name": "Cafe Gratitute",
+    "street_address": "512 Rose Ave",
+    "city": "Venice",
+    "state": "CA",
+    "zip_code": "90291",
+    "phone": "(424) 231-8000",
+    "hours": "Monday - Sunday 8am - 10pm",
+    "menuItems": [
+      {
+        "id": 5,
+        "name": "Pure / Asian Kale & Seaweed Salad",
+        "item_description": "avocado, cucumber, carrots, nori, toasted tamari almonds, sprouts, garlic tahini wasabi dressing",
+        "price": "$9.00",
+        "restaurant_id": 3
+      },
+      {
+        "id": 6,
+        "name": "Elevated / Chicken-fried Mushroom",
+        "item_description": "roasted cauliflower mash, leek & broccoli rabe confit, sundried tomato pesto, maple tamari glaze",
+        "price": "$20.00",
+        "restaurant_id": 3
+      }
+    ],
+    "rating": null
+  }
+]
+```
 
 ## Restricted Access
 
@@ -192,6 +279,24 @@ The registered user is able to delete a restaurant if they desire, due to closin
 ```Return Sample:
 {
   "message": "This restaurant has been deleted."
+}
+```
+
+**Add/POST Ratings ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/;id/rating/new’**
+The registered user is able to add an integer rating (1-5) to the restaurant_id, which will then average out the ratings. This will show as an integer in the GET all restaurants, NOT as an object.
+```
+Sample Body:
+{
+   "rating": 3
+}
+```
+Once the rating is added, the body will look like this:
+```
+Sample Return:
+{
+  "id": 4,
+  "rating": 3,
+  "restaurant_id": 2
 }
 ```
 
