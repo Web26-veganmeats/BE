@@ -87,7 +87,7 @@ Sample Return:
   }
 ]
 ```
-**This is what a fuuly seeded restaurant object will look like:**
+**This is what a fully seeded restaurant object will look like:**
 ```
 Sample Body:
 [
