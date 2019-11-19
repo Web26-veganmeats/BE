@@ -14,9 +14,12 @@ router.get('/', async (req, res) => {
     let restaurants = await Restaurants.find();
     restaurants = await Promise.all(restaurants.map(async (restaurant) => {
       let menuItems = await Menu.findForRestaurant(restaurant.id);
+      const rating = (await Ratings.averageForRestaurant(restaurant.id)).rating;
+
       return {
         ...restaurant,
         menuItems,
+        rating,
       }
     }));
     res.status(200).json(restaurants)
