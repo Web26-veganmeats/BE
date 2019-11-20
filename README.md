@@ -1,5 +1,5 @@
 # Vegan Meets Build Week
-**The base URL for this project is: https://veganmeets-buildweek.herokuapp.com. Vegan Meets is an app that will help vegans find great vegan options. This API provides a users, auth (including JWT tokens), and restaurant routers. The restaurant router contains an array of objects with information about the restaurant that includes basic operation information, menu items (if they are available) and a user rating.**
+**The base URL for this project is: https://veganmeets-buildweek.herokuapp.com. Vegan Meets is an app that will help vegans find great vegan restaurant options. This API provides a users, auth (including JWT tokens), and restaurant routers. The restaurant router contains an array of objects with information about the restaurant that includes basic operation information, menu items (if they are available) and a user rating.**
 
 **You do not need to have a registered account to see the the restaurant information. Please feel free to create an account so you can help make this application better by adding restaurant info, menu items and/or ratings to the restaurants.**
 
