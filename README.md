@@ -11,7 +11,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 A step by step series of examples that tell you how to get a development env running
 
-Install the dependancies that comes with the repo
+Install the dependancies that comes with the repo which include:
+* Knex 
+* knex-cleaner
+* Node
+* nodemon
+* bcrypt
+* dotenv
+* cors
+* Express
+* helmet
+* SQLite3
+* jsonWebToken
+* Jest
+* Supertest
+* pg
 
 ```
 npm i
