@@ -59,7 +59,6 @@ router.post('/new', authMiddleware, (req, res) => {
     })
     .catch(error => {
       console.log(error);
-      //Not sure how to handle a duplicate restaurant-SQLITE_CONSTRAINT: erno 19
       res.status(500).json({message: "There was an error adding the restaurant", error})
     })
   } else {
@@ -152,7 +151,6 @@ router.delete('/menu/:id/delete', authMiddleware, (req, res) => {
   Menu.remove(id)
     .then(removedMenuItem => {
       if (removedMenuItem === 0) {
-        //need to fix if restaurant has been deleted
         res.status(404).json(removedMenuItem)
       } else {
         res.status(200).json({message: 'This menu item has been deleted.'})
