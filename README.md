@@ -3,6 +3,8 @@
 
 **You do not need to have a registered account to see the the restaurant information. Please feel free to create an account so you can help make this application better by adding restaurant info, menu items and/or ratings to the restaurants.**
 
+**You can checkout our marketing page here: https://web26-veganmeats.github.io/Marketing-Page/**
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
