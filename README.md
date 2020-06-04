@@ -193,7 +193,7 @@ Sample Body:
   }
 ]
 ```
-**Everyone has access to individual estaurant information and menu items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/:id’**
+**Everyone has access to individual restaurant information and menu items ‘https://veganmeets-buildweek.herokuapp.com/api/restaurants/:id’**
 ```
 Sample Return:
 {
